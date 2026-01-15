@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settlements - Hostel Expense Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-icon">💰</div>
+        <div class="logo-text">
+          <h3>Expense Hub</h3>
+          <p>Hostel Manager</p>
+        </div>
+      </div>
+
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="dashboard.html" class="nav-link">
+            <span class="nav-icon">📊</span>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="expenses.html" class="nav-link">
+            <span class="nav-icon">💳</span>
+            <span>Expenses</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="settlements.html" class="nav-link active">
+            <span class="nav-icon">🤝</span>
+            <span>Settlements</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="roommates.html" class="nav-link">
+            <span class="nav-icon">👥</span>
+            <span>Roommates</span>
+          </a>
+        </li>
+      </ul>
+
+      <button class="btn btn-ghost" id="logoutBtn" style="width: 100%;">
+        <span>🚪</span>
+        <span>Logout</span>
+      </button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="page-header">
+        <h1>Settlements</h1>
+        <p>Track who owes whom and settle up easily</p>
+      </div>
+
+      <!-- Summary Cards -->
+      <div class="card-grid">
+        <div class="card stat-card primary">
+          <div class="stat-icon">💰</div>
+          <div class="stat-label">Net Balance</div>
+          <div class="stat-value" id="netBalance">₹0</div>
+          <p class="text-muted" id="netBalanceText">All settled up!</p>
+        </div>
+
+        <div class="card stat-card danger">
+          <div class="stat-icon">💸</div>
+          <div class="stat-label">You Owe</div>
+          <div class="stat-value">₹<span id="totalOwe">0</span></div>
+          <p class="text-muted" id="oweCount">0 people</p>
+        </div>
+
+        <div class="card stat-card success">
+          <div class="stat-icon">💵</div>
+          <div class="stat-label">Owed to You</div>
+          <div class="stat-value">₹<span id="totalOwed">0</span></div>
+          <p class="text-muted" id="owedCount">0 people</p>
+        </div>
+      </div>
+
+      <!-- Settlements List -->
+      <div class="card">
+        <div class="card-header">
+          <h3>Settlement Details</h3>
+        </div>
+        <div class="card-body">
+          <div class="settlement-list" id="settlementList">
+            <!-- Settlements will be dynamically added -->
+            <div class="empty-state">
+              <div class="empty-icon">✅</div>
+              <h3>All settled up!</h3>
+              <p>No pending settlements. Add shared expenses to see settlements here.</p>
+              <button class="btn btn-primary" onclick="window.location.href='expenses.html'">
+                Add Shared Expense
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info Card -->
+      <div class="card" style="background: linear-gradient(135deg, hsl(145, 55%, 96%), hsl(150, 55%, 96%)); border: 1px solid hsl(145, 55%, 85%);">
+        <h4 style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px; color: hsl(145, 55%, 38%);">
+          💡 How settlements work
+        </h4>
+        <ul style="margin-left: 20px; color: hsl(210, 10%, 35%); line-height: 1.8;">
+          <li>When you add a <strong>shared expense</strong>, it's split equally among selected roommates</li>
+          <li>If someone else paid, you'll see how much you owe them</li>
+          <li>If you paid and others were included, they owe you their share</li>
+          <li>Use "Send Reminder" to notify roommates about pending payments</li>
+          <li>Click "Mark as Settled" once you've received/sent the money</li>
+        </ul>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/settlements.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roommates - Hostel Expense Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-icon">💰</div>
+        <div class="logo-text">
+          <h3>Expense Hub</h3>
+          <p>Hostel Manager</p>
+        </div>
+      </div>
+
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="dashboard.html" class="nav-link">
+            <span class="nav-icon">📊</span>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="expenses.html" class="nav-link">
+            <span class="nav-icon">💳</span>
+            <span>Expenses</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="settlements.html" class="nav-link">
+            <span class="nav-icon">🤝</span>
+            <span>Settlements</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="roommates.html" class="nav-link active">
+            <span class="nav-icon">👥</span>
+            <span>Roommates</span>
+          </a>
+        </li>
+      </ul>
+
+      <button class="btn btn-ghost" id="logoutBtn" style="width: 100%;">
+        <span>🚪</span>
+        <span>Logout</span>
+      </button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h1>Roommates</h1>
+          <p>Manage your roommates for shared expenses</p>
+        </div>
+        <button class="btn btn-primary" id="addRoommateBtn">
+          ➕ Add Roommate
+        </button>
+      </div>
+
+      <!-- Roommates Grid -->
+      <div class="roommate-list" id="roommateList">
+        <!-- Roommates will be dynamically added -->
+      </div>
+
+      <!-- Info Card -->
+      <div class="card" style="background: linear-gradient(135deg, hsl(145, 55%, 96%), hsl(150, 55%, 96%)); border: 1px solid hsl(145, 55%, 85%); margin-top: 32px;">
+        <h4 style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px; color: hsl(145, 55%, 38%);">
+          💡 Managing Roommates
+        </h4>
+        <ul style="margin-left: 20px; color: hsl(210, 10%, 35%); line-height: 1.8;">
+          <li>Add roommates to split shared expenses like groceries and utilities</li>
+          <li>Each roommate gets a unique color for easy identification</li>
+          <li>When adding expenses, you can select who paid and who to share with</li>
+          <li>You cannot delete yourself from the roommate list</li>
+          <li>Deleting a roommate will also remove their associated expenses</li>
+        </ul>
+      </div>
+    </main>
+  </div>
+
+  <!-- Add Roommate Modal -->
+  <div id="addRoommateModal" class="modal-overlay hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Add New Roommate</h2>
+        <button class="modal-close" onclick="closeAddRoommateModal()">×</button>
+      </div>
+      
+      <form id="addRoommateForm">
+        <div class="form-group">
+          <label for="roommateName" class="form-label">Name</label>
+          <input 
+            type="text" 
+            id="roommateName" 
+            class="form-input" 
+            placeholder="e.g., Sam"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Avatar Color</label>
+          <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px;">
+            <label class="color-option">
+              <input type="radio" name="color" value="hsl(145, 55%, 38%)" checked style="display: none;">
+              <div style="width: 48px; height: 48px; background: hsl(145, 55%, 38%); border-radius: 12px; cursor: pointer; border: 3px solid transparent; transition: all 0.2s;" 
+                   onclick="selectColor(this)"></div>
+            </label>
+            <label class="color-option">
+              <input type="radio" name="color" value="hsl(220, 76%, 48%)" style="display: none;">
+              <div style="width: 48px; height: 48px; background: hsl(220, 76%, 48%); border-radius: 12px; cursor: pointer; border: 3px solid transparent; transition: all 0.2s;" 
+                   onclick="selectColor(this)"></div>
+            </label>
+            <label class="color-option">
+              <input type="radio" name="color" value="hsl(280, 70%, 55%)" style="display: none;">
+              <div style="width: 48px; height: 48px; background: hsl(280, 70%, 55%); border-radius: 12px; cursor: pointer; border: 3px solid transparent; transition: all 0.2s;" 
+                   onclick="selectColor(this)"></div>
+            </label>
+            <label class="color-option">
+              <input type="radio" name="color" value="hsl(0, 72%, 55%)" style="display: none;">
+              <div style="width: 48px; height: 48px; background: hsl(0, 72%, 55%); border-radius: 12px; cursor: pointer; border: 3px solid transparent; transition: all 0.2s;" 
+                   onclick="selectColor(this)"></div>
+            </label>
+            <label class="color-option">
+              <input type="radio" name="color" value="hsl(35, 90%, 55%)" style="display: none;">
+              <div style="width: 48px; height: 48px; background: hsl(35, 90%, 55%); border-radius: 12px; cursor: pointer; border: 3px solid transparent; transition: all 0.2s;" 
+                   onclick="selectColor(this)"></div>
+            </label>
+            <label class="color-option">
+              <input type="radio" name="color" value="hsl(180, 60%, 45%)" style="display: none;">
+              <div style="width: 48px; height: 48px; background: hsl(180, 60%, 45%); border-radius: 12px; cursor: pointer; border: 3px solid transparent; transition: all 0.2s;" 
+                   onclick="selectColor(this)"></div>
+            </label>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeAddRoommateModal()">
+            Cancel
+          </button>
+          <button type="submit" class="btn btn-primary">
+            Add Roommate
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/roommates.js"></script>
+</body>
+</html>
