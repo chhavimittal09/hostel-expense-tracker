@@ -127,6 +127,7 @@ p {
   justify-content: center;
   background-size: cover;
   background-position: center;
+  background-repeat: no repeat;
   padding: var(--spacing-lg);
   position: relative;
 }
