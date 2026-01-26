@@ -68,10 +68,18 @@ html {
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  background-image: url("./Login_bg.png");
+   background:
+    radial-gradient(circle at 20% 20%, rgba(34,197,94,0.18), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(16,185,129,0.15), transparent 45%),
+    linear-gradient(135deg, #f8fafc, #ecfdf5);
   line-height: 1.6;
   min-height: 100vh;
   overflow-x: hidden;
+  margin: 0;
+  background: url("./bg.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 /* ================================
@@ -116,6 +124,24 @@ p {
   font-size: 0.875rem;
 }
 
+/* FORGOT PASSWORD */
+.forgot-password {
+  text-align: right;
+  margin-top: -14px;
+  margin-bottom: 10px;
+}
+
+.forgot-password a {
+  font-size: 0.85rem;
+  color: hsl(var(--primary));
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
 /* ================================
    LAYOUT - LOGIN PAGE
    ================================ */
@@ -125,8 +151,9 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("Login_bg.png");
+  background-image: url("BG_img.png");
   background-size: cover;
+  backdrop-filter: blur(7px);
   background-position: center;
   background-repeat: no-repeat;
   padding: var(--spacing-lg);
@@ -176,12 +203,9 @@ p {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom right,
-    rgba(0, 0, 0, 0.55),
-    rgba(0, 0, 0, 0.35)
-  );
-  backdrop-filter: blur(4.5px);
+  background:
+    radial-gradient(circle at 15% 60%, rgba(34,197,94,0.12), transparent 40%),
+    radial-gradient(circle at 85% 40%, rgba(16,185,129,0.12), transparent 40%);
   z-index: 0;
 }
 
@@ -189,13 +213,14 @@ p {
   position: relative;
   z-index: 1;
   background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
+
   border-radius: var(--radius-xl);
   padding: var(--spacing-2xl);
   width: 100%;
-  max-width: 420px;
-  box-shadow: var(--shadow-lg);
-  border: 3px solid rgba(255, 255, 255, 0.3);
+  max-width: 440px;
+  box-shadow:  0 20px 50px rgba(0,0,0,0.15),
+    0 0 0 1px rgba(255,255,255,0.6);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   animation: slideUpFade 0.6s ease-out;
 
 }
@@ -248,19 +273,37 @@ p {
 }
 
 .login-button {
-  background: #ff7f50;
+  width: 100%;
+  background: linear-gradient(
+    135deg,
+    hsl(var(--primary)),
+    hsl(var(--primary-glow))
+  );
   border: none;
-  border-radius: 10px;
-  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  box-shadow:
+    0 10px 25px hsl(var(--primary) / 0.35);
+  padding: 14px 24px;
   color: white;
-  font-weight: bold;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  transition: 
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
 }
 
 .login-button:hover {
-  box-shadow: 0 0 15px #ff7f50, 0 0 30px #ff7f50;
-  transform: scale(1.05);
+  box-shadow:  0 15px 35px hsl(var(--primary) / 0.45);
+  filter: brightness(1.05);
+  transform: translateY(-2px);
+}
+
+.login-button:active {
+  transform: translateY(0);
+  box-shadow:
+    0 8px 20px hsl(var(--primary) / 0.3);
 }
 
 
@@ -276,13 +319,14 @@ p {
 
 .sidebar {
   width: 260px;
-  background: hsl(var(--surface));
-  border-right: 1px solid hsl(var(--border));
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-right: 1px solid rgba(0,0,0,0.05);
   padding: var(--spacing-lg);
   display: flex;
   flex-direction: column;
   position: fixed;
-  height: 100vh;
+  min-height: 100vh;
   left: 0;
   top: 0;
 }
@@ -363,6 +407,7 @@ p {
   margin-left: 260px;
   padding: var(--spacing-xl);
   min-height: 100vh;
+  overflow-y: auto;
 }
 
 .page-header {
@@ -377,15 +422,17 @@ p {
   font-size: 1rem;
 }
 
+
 /* ================================
    CARDS & CONTAINERS
    ================================ */
 
 .card {
-  background: hsl(var(--surface));
-  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
   padding: var(--spacing-lg);
-  box-shadow: var(--shadow-sm);
+
   border: 1px solid hsl(var(--border));
   transition: all var(--transition);
 }
@@ -1067,7 +1114,6 @@ p {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1082,7 +1128,7 @@ p {
   width: 100%;
   max-width: 500px;
   max-height: 90vh;
-  overflow-y: auto;
+  overflow-y: hidden;
   box-shadow: var(--shadow-lg);
 }
 
@@ -1222,3 +1268,4 @@ p {
     font-size 0.3s ease,
     color 0.3s ease;
 }
+
