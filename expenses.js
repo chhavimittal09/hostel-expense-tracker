@@ -85,11 +85,12 @@ function updateExpenseList() {
   // Render expenses
   const categoryIcons = {
     'Food': '🍔',
-    'Groceries': '🛒',
-    'Utilities': '💡',
+    'Shopping': '🛍️',
     'Transport': '🚗',
+    'Utilities': '💡',
+    'Groceries': '🛒',
     'Entertainment': '🎮',
-    'Other': '📦'
+    'Others': '📦'
   };
 
   expenseListContainer.innerHTML = expenses.map(expense => {

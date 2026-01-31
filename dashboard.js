@@ -80,11 +80,12 @@ function updateCategoryBars() {
   const spending = AppData.getSpendingByCategory();
   const categoryIcons = {
     'Food': '🍔',
-    'Groceries': '🛒',
-    'Utilities': '💡',
+    'Shopping': '🛍️',
     'Transport': '🚗',
+    'Utilities': '💡',
+    'Groceries': '🛒',
     'Entertainment': '🎮',
-    'Other': '📦'
+    'Others': '📦'
   };
 
   if (Object.keys(spending).length === 0) {
