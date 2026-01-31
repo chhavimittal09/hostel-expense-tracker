@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roommates - Hostel Expense Manager</title>
+  <title>Friends - Hostel Expense Manager</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -43,7 +43,7 @@
         <li class="nav-item">
           <a href="roommates.html" class="nav-link active">
             <span class="nav-icon">👥</span>
-            <span>Roommates</span>
+            <span>Friends</span>
           </a>
         </li>
       </ul>
@@ -58,11 +58,11 @@
     <main class="main-content">
       <div class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
         <div>
-          <h1>Roommates</h1>
-          <p>Manage your roommates for shared expenses</p>
+          <h1>Friends</h1>
+          <p>Manage your friends for shared expenses</p>
         </div>
         <button class="btn btn-primary" id="addRoommateBtn">
-          ➕ Add Roommate
+          ➕ Add Friends
         </button>
       </div>
 
@@ -74,14 +74,14 @@
       <!-- Info Card -->
       <div class="card" style="background: linear-gradient(135deg, hsl(145, 55%, 96%), hsl(150, 55%, 96%)); border: 1px solid hsl(145, 55%, 85%); margin-top: 32px;">
         <h4 style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px; color: hsl(145, 55%, 38%);">
-          💡 Managing Roommates
+          💡 Managing Friends
         </h4>
         <ul style="margin-left: 20px; color: hsl(210, 10%, 35%); line-height: 1.8;">
-          <li>Add roommates to split shared expenses like groceries and utilities</li>
-          <li>Each roommate gets a unique color for easy identification</li>
+          <li>Add friends to split shared expenses like groceries and utilities</li>
+          <li>Each friend gets a unique color for easy identification</li>
           <li>When adding expenses, you can select who paid and who to share with</li>
-          <li>You cannot delete yourself from the roommate list</li>
-          <li>Deleting a roommate will also remove their associated expenses</li>
+          <li>You cannot delete yourself from the friends list</li>
+          <li>Deleting a friend will also remove their associated expenses</li>
         </ul>
       </div>
     </main>
@@ -91,7 +91,7 @@
   <div id="addRoommateModal" class="modal-overlay hidden">
     <div class="modal">
       <div class="modal-header">
-        <h2>Add New Roommate</h2>
+        <h2>Add New Friend</h2>
         <button class="modal-close" onclick="closeAddRoommateModal()">×</button>
       </div>
       
@@ -148,7 +148,7 @@
             Cancel
           </button>
           <button type="submit" class="btn btn-primary">
-            Add Roommate
+            Add Friend
           </button>
         </div>
       </form>
