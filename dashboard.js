@@ -16,13 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
 function checkAuth() {
   const isLoggedIn = localStorage.getItem('isLoggedIn');
   if (isLoggedIn !== 'true') {
-    window.location.href = 'login.html';
+    window.location.href = 'index.html';
   }
 }
 
 function logout() {
   localStorage.removeItem('isLoggedIn');
-  window.location.href = 'login.html';
+  window.location.href = 'index.html';
 }
 
 function updateDashboard() {

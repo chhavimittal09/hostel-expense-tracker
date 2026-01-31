@@ -5,43 +5,56 @@
 
 :root {
   /* Color System - HSL Format */
-  --primary: 145 55% 38%;           /* Emerald green - brand color */
-  --primary-hover: 145 60% 30%;     /* Darker emerald for hover */
-  --primary-light: 150 55% 70%;     /* Mint - accent */
-  --primary-glow: 145 50% 48%;      /* Brighter green for effects */
+
+  /* ===== Core Pastel Gradient Colors ===== */
+  --mint-soft: 135 45% 85%;     /* soft green */
+  --peach-soft: 30 70% 88%;     /* warm peach */
+  --aqua-soft: 190 55% 85%;     /* light blue center */
+  --pink-soft: 350 55% 88%;     /* subtle pink edge */
+
+  /* ===== Primary / Accent ===== */
+  --primary: 135 45% 65%;           /* muted mint */
+  --primary-hover: 135 45% 55%;    
+  --primary-light: 135 45% 85%;     
+  --primary-glow: 145 50% 48%;     
   
   --accent: 150 55% 70%;            /* Mint accent */
   --accent-light: 150 50% 96%;      /* Soft mint tint */
   
-  --sage: 135 20% 72%;              /* Sage - neutral green */
-  --sage-light: 135 20% 90%;        /* Light sage for borders */
-  
-  --background: 210 20% 98%;        /* Off-white */
+  /* ===== Backgrounds ===== */
+  --background: 135 45% 90%;        /* overall soft green */
   --surface: 0 0% 100%;             /* Pure white for cards */
-  --border: 210 15% 90%;            /* Subtle borders */
+  --border: 210 10% 70%;            /* Subtle borders */
   
-  --foreground: 210 10% 25%;        /* Body text - dark gray */
-  --foreground-muted: 210 8% 45%;   /* Muted text */
-  --foreground-light: 210 8% 65%;   /* Light text */
+  /* ===== Text / Lines ===== */
+  --foreground: 0 0% 10%;           /* near-black text */
+  --foreground-muted: 0 0% 30%;     /*  muted-text */
+  --foreground-light: 0 0% 50%;     /*  light text */
   
+  /* ===== Status ===== */
   --success: 145 55% 38%;           /* Green for positive */
   --warning: 45 95% 55%;            /* Amber for warnings */
   --danger: 0 72% 55%;              /* Red for negative */
   
+  /* ===== Shadows ===== */
   --shadow-sm: 0 2px 4px hsl(210 10% 25% / 0.06);
   --shadow-md: 0 4px 12px hsl(210 10% 25% / 0.08);
   --shadow-lg: 0 8px 24px hsl(210 10% 25% / 0.12);
   --shadow-glow: 0 0 24px hsl(var(--primary-glow) / 0.15);
   
+  /* ===== Radius ===== */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 20px;
   --radius-full: 9999px;
   
+  
+  /* ===== Motion ===== */
   --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   
+  /* ===== Spacing ===== */
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
@@ -68,18 +81,10 @@ html {
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-   background:
-    radial-gradient(circle at 20% 20%, rgba(34,197,94,0.18), transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(16,185,129,0.15), transparent 45%),
-    linear-gradient(135deg, #f8fafc, #ecfdf5);
+  background-image: url("./BG_img.png");
   line-height: 1.6;
   min-height: 100vh;
   overflow-x: hidden;
-  margin: 0;
-  background: url("./bg.png");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
 }
 
 /* ================================
@@ -122,24 +127,6 @@ p {
 .text-light {
   color: hsl(var(--foreground-light));
   font-size: 0.875rem;
-}
-
-/* FORGOT PASSWORD */
-.forgot-password {
-  text-align: right;
-  margin-top: -14px;
-  margin-bottom: 10px;
-}
-
-.forgot-password a {
-  font-size: 0.85rem;
-  color: hsl(var(--primary));
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.forgot-password a:hover {
-  text-decoration: underline;
 }
 
 /* ================================
@@ -207,6 +194,8 @@ p {
     radial-gradient(circle at 15% 60%, rgba(34,197,94,0.12), transparent 40%),
     radial-gradient(circle at 85% 40%, rgba(16,185,129,0.12), transparent 40%);
   z-index: 0;
+  backdrop-filter: blur(2px);
+
 }
 
 .login-card {
@@ -304,6 +293,29 @@ p {
   transform: translateY(0);
   box-shadow:
     0 8px 20px hsl(var(--primary) / 0.3);
+}
+
+
+/* FORGOT PASSWORD */
+.forgot-password {
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+
+.forgot-password a {
+  font-size: 0.85rem;
+  color: #2f9e5f;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+  color: #278a52; 
 }
 
 
@@ -435,6 +447,7 @@ p {
 
   border: 1px solid hsl(var(--border));
   transition: all var(--transition);
+  margin-bottom: 24px;
 }
 
 .card:hover {
@@ -1119,6 +1132,7 @@ p {
   justify-content: center;
   z-index: 1000;
   padding: var(--spacing-lg);
+  backdrop-filter: blur(4px);
 }
 
 .modal {
@@ -1128,7 +1142,7 @@ p {
   width: 100%;
   max-width: 500px;
   max-height: 90vh;
-  overflow-y: hidden;
+  overflow-y: auto;
   box-shadow: var(--shadow-lg);
 }
 
