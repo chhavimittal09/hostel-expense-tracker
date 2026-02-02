@@ -63,17 +63,17 @@ function updateRoommateList() {
             ${isCurrentUser ? '<span class="badge-you">YOU</span>' : ''}
           </div>
           <p class="text-muted" style="font-size: 0.875rem;">
-            ${isCurrentUser ? 'Primary account' : 'Roommate'}
+            ${isCurrentUser ? 'Primary account' : 'Friend'}
           </p>
         </div>
         <div class="roommate-actions">
           ${!isCurrentUser ? `
             <button class="btn btn-ghost btn-icon" onclick="deleteRoommate('${roommate.id}')" title="Remove roommate">
-              🗑️
+              ❌
             </button>
           ` : `
             <button class="btn btn-ghost btn-icon" disabled style="opacity: 0.3; cursor: not-allowed;" title="Cannot delete yourself">
-              🗑️
+              ❌
             </button>
           `}
         </div>
