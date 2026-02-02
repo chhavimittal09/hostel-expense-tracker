@@ -148,9 +148,7 @@ const AppData = {
     this.expenses.unshift({
       id: 'exp-' + Date.now(),
       ...expense,
-      date: new Date().toISOString()
     });
-    this.updateBudget();
   },
 
   // Delete expense

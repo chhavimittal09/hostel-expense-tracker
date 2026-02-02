@@ -43,7 +43,7 @@
         <li class="nav-item">
           <a href="roommates.html" class="nav-link">
             <span class="nav-icon">👥</span>
-            <span>Roommates</span>
+            <span>Friends</span>
           </a>
         </li>
       </ul>
@@ -83,7 +83,7 @@
         <h4 style="margin-bottom: 12px; margin-top: 20px; color: hsl(210, 10%, 25%);">Filter by Type</h4>
         <div class="filters" id="typeFilters">
           <button class="filter-pill active" data-type="all">All</button>
-          <button class="filter-pill" data-type="personal">Personal</button>
+          <button class="filter-pill" data-type="self">Self</button>
           <button class="filter-pill" data-type="shared">Shared</button>
         </div>
       </div>
@@ -106,11 +106,22 @@
   <!-- Add Expense Modal -->
   <div id="addExpenseModal" class="modal-overlay hidden">
     <div class="modal">
-      <div class="modal-header">
+      <div class="modal-header expense-header">
         <h2>Add New Expense</h2>
-        <button class="modal-close" onclick="closeAddExpenseModal()">×</button>
-      </div>
-      
+        <div class="expense-date-wrapper">
+          <input
+            type="date"
+            id="expenseDate"
+            class="expense-date"
+            />
+            <span class="expense-date-hint">
+              Change for older expenses
+            </span>
+        </div>
+      </div>  
+
+
+
       <form id="addExpenseForm">
         <div class="form-group">
           <label for="expenseTitle" class="form-label">Title</label>
@@ -153,7 +164,7 @@
         <div class="form-group">
           <label for="expenseType" class="form-label">Type</label>
           <select id="expenseType" class="form-select" required>
-            <option value="personal">Personal (only you)</option>
+            <option value="self">Self (only you)</option>
             <option value="shared">Shared (split with roommates)</option>
           </select>
         </div>

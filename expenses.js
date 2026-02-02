@@ -113,7 +113,7 @@ function updateExpenseList() {
             </div>
             <div class="expense-tags">
               <span class="tag tag-category">${expense.category}</span>
-              <span class="tag tag-${expense.type}">${expense.type === 'shared' ? 'Shared' : 'Personal'}</span>
+              <span class="tag tag-${expense.type}">${expense.type === 'shared' ? 'Shared' : 'Self'}</span>
             </div>
           </div>
         </div>
@@ -129,7 +129,10 @@ function updateExpenseList() {
 function openAddExpenseModal() {
   // Populate roommate options
   populateRoommateOptions();
-  
+
+  document.getElementById("expenseDate").value =
+  new Date().toISOString().split("T")[0];
+
   // Reset form
   document.getElementById('addExpenseForm').reset();
   document.getElementById('sharedWithGroup').style.display = 'none';
@@ -178,6 +181,9 @@ function toggleSharedOptions() {
 function handleAddExpense(e) {
   e.preventDefault();
 
+  const expenseDate =
+  document.getElementById("expenseDate").value ||
+  new Date().toISOString().split("T")[0];
   const title = document.getElementById('expenseTitle').value.trim();
   const amount = parseFloat(document.getElementById('expenseAmount').value);
   const category = document.getElementById('expenseCategory').value;
@@ -202,7 +208,8 @@ function handleAddExpense(e) {
     category,
     type,
     paidBy,
-    sharedWith
+    sharedWith,
+    date: expenseDate
   });
 
   AppData.save();

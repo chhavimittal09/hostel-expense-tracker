@@ -916,6 +916,52 @@ body::before {
   flex-shrink: 0;
 }
 
+/* Header layout */
+.expense-header {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Date + hint container */
+.expense-date-wrapper {
+  margin-left: auto;
+  margin-right: 28px; /* keeps distance from ❌ */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* Date pill styling */
+.expense-date {
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 999px;
+  border: 1.5px solid #22c55e;
+  background-color: #f5fffb;
+  color: #065f46;
+}
+
+/* Remove ugly browser outline */
+.expense-date:focus {
+  outline: none;
+  border-color: #22c55e;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25);
+}
+
+/* Small helper text */
+.expense-date-hint {
+  font-size: 11px;
+  color: #6b7280; /* neutral gray */
+  margin-top: 3px;
+}
+
+.expense-date,
+.expense-date-display {
+  font-family: 'Nunito', 'Segoe UI', system-ui, sans-serif;
+  font-weight: 600;
+}
+
 .expense-details {
   flex: 1;
   min-width: 0;
