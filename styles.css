@@ -1467,4 +1467,34 @@ body::before {
 
 }
 
+.charts-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.chart-card {
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.chart-card h3 {
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.chart-card canvas {
+  height: 350px !important;
+}
+
+.chart-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
 
