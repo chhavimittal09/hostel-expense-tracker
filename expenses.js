@@ -6,6 +6,21 @@ let barChart = null;
 let currentCategoryFilter = 'all';
 let currentTypeFilter = 'all';
 
+function toggleChartsVisibility() {
+  const charts = document.getElementById("chartsContainer");
+  const empty = document.getElementById("emptyState");
+
+  if (!AppData.expenses || AppData.expenses.length === 0) {
+    charts.style.display = "none";
+    empty.style.display = "block";
+    return false;
+  } else {
+    charts.style.display = "grid";
+    empty.style.display = "none";
+    return true;
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   // Check login
   checkAuth();
@@ -233,6 +248,7 @@ document.addEventListener('visibilitychange', () => {
 });
 
 function renderCharts() {
+  if (!toggleChartsVisibility()) return;
 
   // ===== PIE CHART =====
   const categoryTotals = AppData.getSpendingByCategory();
