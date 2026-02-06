@@ -1,13 +1,9 @@
-// Dashboard page logic
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Check login
   checkAuth();
 
-  // Initialize dashboard
   updateDashboard();
 
-  // Event listeners
   document.getElementById('logoutBtn').addEventListener('click', logout);
   document.getElementById('editBudgetBtn').addEventListener('click', openEditBudgetModal);
   document.getElementById('editBudgetForm').addEventListener('submit', handleEditBudget);
@@ -26,7 +22,6 @@ function logout() {
 }
 
 function updateDashboard() {
-  // Update budget stats
   const budgetTotal = AppData.budget.total;
   const totalUserSpent = AppData.getTotalUserSpent();
   const remaining = budgetTotal - totalUserSpent;
@@ -39,7 +34,6 @@ function updateDashboard() {
   document.getElementById('userPaid').textContent = formatCurrency(totalUserSpent);
   document.getElementById('expenseCount').textContent = `${expenseCount} expense${expenseCount !== 1 ? 's' : ''}`;
 
-  // Budget status message
   const statusEl = document.getElementById('budgetStatus');
   if (percentage < 50) {
     statusEl.textContent = "You're doing great!";
@@ -71,7 +65,6 @@ function updateDashboard() {
     progressFill.className = 'progress-fill';
   }
 
-  // Update category breakdown
   updateCategoryBars();
 }
 
@@ -103,11 +96,9 @@ function updateCategoryBars() {
     return;
   }
 
-  // Calculate total and max for scaling
   const total = Object.values(spending).reduce((sum, val) => sum + val, 0);
   const maxSpending = Math.max(...Object.values(spending));
 
-  // Sort by amount descending
   const sortedCategories = Object.entries(spending).sort((a, b) => b[1] - a[1]);
 
   categoryBarsContainer.innerHTML = sortedCategories.map(([category, amount]) => {
@@ -157,7 +148,6 @@ function formatCurrency(amount) {
   return amount.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
-// Update dashboard when page becomes visible (in case data changed)
 document.addEventListener('visibilitychange', () => {
   if (!document.hidden) {
     AppData.load();
