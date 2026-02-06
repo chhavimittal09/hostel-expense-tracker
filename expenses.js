@@ -1,5 +1,8 @@
 // Expenses page logic
 
+let pieChart = null;
+let barChart = null;
+
 let currentCategoryFilter = 'all';
 let currentTypeFilter = 'all';
 
@@ -228,3 +231,114 @@ document.addEventListener('visibilitychange', () => {
     updateExpenseList();
   }
 });
+
+function renderCharts() {
+
+  // ===== PIE CHART =====
+  const categoryTotals = AppData.getSpendingByCategory();
+  const pieLabels = Object.keys(categoryTotals);
+  const pieValues = Object.values(categoryTotals);
+
+  if (pieChart) pieChart.destroy();
+
+  pieChart = new Chart(
+    document.getElementById("categoryPieChart"),
+    {
+      type: "pie",
+      data: {
+        labels: pieLabels,
+        datasets: [{
+          data: pieValues,
+          backgroundColor: [
+            "#ff8c66",
+            "#36a2eb",
+            "#4bc0c0",
+            "#9966ff",
+            "#ffcd56",
+            "#2ecc71",
+            "#c9cbcf"
+          ]
+        }]
+      },
+      options: {
+       layout: {
+        padding: 20
+       },
+       plugins: {
+         legend: {
+           position: "right",
+           align: "center",
+           labels: {
+              boxWidth: 14,
+              boxHeight: 14,
+              padding: 16,
+              font: {
+                size: 13
+              }
+            }
+          }
+        }
+      }
+    }
+  );
+
+  // ===== BAR CHART =====
+  const dailyTotals = {};
+          const barColors = [
+           "#4695db",
+           "#8c4cd9",
+           "#3cc7a0",
+           "#de902b",
+           "#f1d33c"
+        ];
+
+  AppData.expenses.forEach(exp => {
+    if (!dailyTotals[exp.date]) {
+      dailyTotals[exp.date] = 0;
+    }
+    dailyTotals[exp.date] += exp.amount;
+  });
+
+  if (barChart) barChart.destroy();
+
+  barChart = new Chart(
+    document.getElementById("dailyBarChart"),
+    {
+      type: "bar",
+      data: {
+        labels: Object.keys(dailyTotals).map(dateStr => {
+          const date = new Date(dateStr);
+          return date.toLocaleDateString("en-IN", {
+             day: "numeric",
+             month: "short"
+          });
+        }),
+        datasets: [{
+          label: "₹ Spent",
+          data: Object.values(dailyTotals),
+          backgroundColor: barColors.slice(0, Object.values(dailyTotals).length),
+          borderRadius: 12,
+          maxBarThickness: 60
+        }]
+      },
+      options: {
+        plugins: {
+          legend: {
+            display: false
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    }
+  );
+}
+
+document.addEventListener("DOMContentLoaded", renderCharts);
+AppData.save();
+updateExpenseList();
+renderCharts();
+
