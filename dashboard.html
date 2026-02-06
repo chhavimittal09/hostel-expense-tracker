@@ -12,7 +12,7 @@
 </head>
 <body>
   <div class="app-container">
-    <!-- Sidebar -->
+
     <aside class="sidebar">
      <a href="dashboard.html" style="text-decoration: none; color: inherit;"> 
       <div class="sidebar-logo">
@@ -57,14 +57,14 @@
       </button>
     </aside>
 
-    <!-- Main Content -->
+    
     <main class="main-content">
       <div class="page-header">
         <h1>Dashboard</h1>
         <p>Overview of your monthly finances</p>
       </div>
 
-      <!-- Budget Overview -->
+
       <div class="card-grid">
         <div class="card stat-card primary">
           <div class="stat-icon">💰</div>
@@ -95,7 +95,6 @@
         </div>
       </div>
 
-      <!-- Budget Progress -->
       <div class="card">
         <div class="card-header">
           <h3>Budget Progress</h3>
@@ -111,14 +110,13 @@
         </div>
       </div>
 
-      <!-- Spending by Category -->
       <div class="card">
         <div class="card-header">
           <h3>Spending by Category</h3>
         </div>
         <div class="card-body">
           <div class="category-bars" id="categoryBars">
-            <!-- Category bars will be dynamically added -->
+            <!-- Added through JS -->
             <div class="empty-state">
               <div class="empty-icon">📊</div>
               <h3>No expenses yet</h3>
@@ -131,7 +129,6 @@
         </div>
       </div>
 
-      <!-- Quick Action -->
       <div style="position: fixed; bottom: 32px; right: 32px;">
         <button class="btn btn-primary" onclick="window.location.href='expenses.html'" 
                 style="border-radius: 9999px; padding: 16px 32px; font-size: 1.125rem; box-shadow: 0 8px 24px hsl(145 55% 38% / 0.3);">
@@ -141,7 +138,6 @@
     </main>
   </div>
 
-  <!-- Edit Budget Modal -->
   <div id="editBudgetModal" class="modal-overlay hidden">
     <div class="modal">
       <div class="modal-header">
