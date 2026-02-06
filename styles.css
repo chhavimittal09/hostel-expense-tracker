@@ -1,48 +1,37 @@
-/* ================================
-   DESIGN SYSTEM - HOSTEL EXPENSE MANAGER
-   Fresh Green Theme with Soft Rounded Design
-   ================================ */
+
 
 :root {
-  /* Color System - HSL Format */
-
-  /* ===== Core Pastel Gradient Colors ===== */
-  --mint-soft: 135 45% 85%;     /* soft green */
-  --peach-soft: 30 70% 88%;     /* warm peach */
-  --aqua-soft: 190 55% 85%;     /* light blue center */
-  --pink-soft: 350 55% 88%;     /* subtle pink edge */
-
-  /* ===== Primary / Accent ===== */
-  --primary: 135 45% 65%;           /* muted mint */
+  
+  --mint-soft: 135 45% 85%;     
+  --peach-soft: 30 70% 88%;    
+  --aqua-soft: 190 55% 85%;     
+  --pink-soft: 350 55% 88%;     
+   
+  --primary: 135 45% 65%;           
   --primary-hover: 135 45% 55%;    
   --primary-light: 135 45% 85%;     
   --primary-glow: 145 50% 48%;     
   
-  --accent: 150 55% 70%;            /* Mint accent */
-  --accent-light: 150 50% 96%;      /* Soft mint tint */
+  --accent: 150 55% 70%;            
+  --accent-light: 150 50% 96%;     
   
-  /* ===== Backgrounds ===== */
-  --background: 135 45% 90%;        /* overall soft green */
-  --surface: 0 0% 100%;             /* Pure white for cards */
-  --border: 210 10% 70%;            /* Subtle borders */
+  --background: 135 45% 90%;       
+  --surface: 0 0% 100%;             
+  --border: 210 10% 70%;           
   
-  /* ===== Text / Lines ===== */
-  --foreground: 0 0% 10%;           /* near-black text */
-  --foreground-muted: 0 0% 30%;     /*  muted-text */
-  --foreground-light: 0 0% 50%;     /*  light text */
+  --foreground: 0 0% 10%;           
+  --foreground-muted: 0 0% 30%;     
+  --foreground-light: 0 0% 50%;     
   
-  /* ===== Status ===== */
-  --success: 145 55% 38%;           /* Green for positive */
-  --warning: 45 95% 55%;            /* Amber for warnings */
-  --danger: 0 72% 55%;              /* Red for negative */
+  --success: 145 55% 38%;           
+  --warning: 45 95% 55%;            
+  --danger: 0 72% 55%;             
   
-  /* ===== Shadows ===== */
   --shadow-sm: 0 2px 4px hsl(210 10% 25% / 0.06);
   --shadow-md: 0 4px 12px hsl(210 10% 25% / 0.08);
   --shadow-lg: 0 8px 24px hsl(210 10% 25% / 0.12);
   --shadow-glow: 0 0 24px hsl(var(--primary-glow) / 0.15);
   
-  /* ===== Radius ===== */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
@@ -50,11 +39,9 @@
   --radius-full: 9999px;
   
   
-  /* ===== Motion ===== */
   --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   
-  /* ===== Spacing ===== */
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
@@ -63,9 +50,7 @@
   --spacing-2xl: 48px;
 }
 
-/* ================================
-   GLOBAL RESET & BASE
-   ================================ */
+
 
 * {
   margin: 0;
@@ -87,9 +72,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ================================
-   TYPOGRAPHY
-   ================================ */
+
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
@@ -129,9 +112,7 @@ p {
   font-size: 0.875rem;
 }
 
-/* ================================
-   LAYOUT - LOGIN PAGE
-   ================================ */
+
 
 .ambient-overlay {
   position: fixed;
@@ -344,7 +325,6 @@ body::before {
 }
 
 
-/* FORGOT PASSWORD */
 .forgot-password {
   display: flex;
   justify-content: flex-end;
@@ -367,9 +347,6 @@ body::before {
 }
 
 
-/* ================================
-   LAYOUT - MAIN APP
-   ================================ */
 
 .app-container {
   display: flex;
@@ -483,10 +460,6 @@ body::before {
 }
 
 
-/* ================================
-   CARDS & CONTAINERS
-   ================================ */
-
 .card {
   background: rgba(255, 255, 255, 0.92);
   border-radius: 16px;
@@ -524,9 +497,6 @@ body::before {
   margin-bottom: var(--spacing-xl);
 }
 
-/* ================================
-   STAT CARDS
-   ================================ */
 
 .stat-card {
   display: flex;
@@ -593,9 +563,6 @@ body::before {
   color: hsl(var(--danger));
 }
 
-/* ================================
-   FORMS & INPUTS
-   ================================ */
 
 .form-group {
   margin-bottom: var(--spacing-lg);
@@ -651,9 +618,6 @@ body::before {
   text-align: center;
 }
 
-/* ================================
-   BUTTONS
-   ================================ */
 
 .btn {
   display: inline-flex;
@@ -752,9 +716,6 @@ body::before {
   border-radius: var(--radius-md);
 }
 
-/* ================================
-   PROGRESS BAR
-   ================================ */
 
 .progress-bar {
   width: 100%;
@@ -780,9 +741,7 @@ body::before {
   background: linear-gradient(90deg, hsl(var(--danger)), hsl(0 72% 65%));
 }
 
-/* ================================
-   CATEGORY BARS
-   ================================ */
+
 
 .category-bars {
   display: flex;
@@ -833,9 +792,6 @@ body::before {
   transition: width var(--transition-slow);
 }
 
-/* ================================
-   FILTERS & PILLS
-   ================================ */
 
 .filters {
   display: flex;
@@ -869,9 +825,7 @@ body::before {
   border-color: transparent;
 }
 
-/* ================================
-   EXPENSE CARDS
-   ================================ */
+
 
 .expense-list {
   display: flex;
@@ -916,23 +870,20 @@ body::before {
   flex-shrink: 0;
 }
 
-/* Header layout */
 .expense-header {
   display: flex;
   align-items: center;
   position: relative;
 }
 
-/* Date + hint container */
 .expense-date-wrapper {
   margin-left: auto;
-  margin-right: 28px; /* keeps distance from ❌ */
+  margin-right: 28px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
 
-/* Date pill styling */
 .expense-date {
   padding: 6px 12px;
   font-size: 13px;
@@ -942,17 +893,17 @@ body::before {
   color: #065f46;
 }
 
-/* Remove ugly browser outline */
+
 .expense-date:focus {
   outline: none;
   border-color: #22c55e;
   box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25);
 }
 
-/* Small helper text */
+
 .expense-date-hint {
   font-size: 11px;
-  color: #6b7280; /* neutral gray */
+  color: #6b7280;
   margin-top: 3px;
 }
 
@@ -1035,9 +986,7 @@ body::before {
 }
 
 
-/* ================================
-   ROOMMATE CARDS
-   ================================ */
+
 
 .roommate-list {
   display: grid;
@@ -1102,9 +1051,7 @@ body::before {
   gap: var(--spacing-sm);
 }
 
-/* ================================
-   SETTLEMENT CARDS
-   ================================ */
+
 
 .settlement-list {
   display: flex;
@@ -1189,10 +1136,6 @@ body::before {
   gap: var(--spacing-sm);
 }
 
-/* ================================
-   EMPTY STATES
-   ================================ */
-
 .empty-state {
   text-align: center;
   padding: var(--spacing-2xl);
@@ -1214,9 +1157,6 @@ body::before {
   color: hsl(var(--foreground-muted));
 }
 
-/* ================================
-   MODAL/DIALOG
-   ================================ */
 
 .modal-overlay {
   position: fixed;
@@ -1279,9 +1219,7 @@ body::before {
   margin-top: var(--spacing-xl);
 }
 
-/* ================================
-   UTILITIES
-   ================================ */
+
 
 .hidden {
   display: none !important;
@@ -1323,9 +1261,6 @@ body::before {
   text-align: center;
 }
 
-/* ================================
-   RESPONSIVE
-   ================================ */
 
 @media (max-width: 1024px) {
   body {
@@ -1378,10 +1313,8 @@ body::before {
     color 0.3s ease;
 }
 
-/* ===== Minimal Mobile Responsiveness ===== */
 @media (max-width: 768px) {
 
-  /* General */
   body {
     font-size: 14px;
   }
@@ -1394,7 +1327,6 @@ body::before {
     line-height: 1.2;
   }
 
-  /* Header */
   header {
     flex-direction: column;
     align-items: flex-start;
@@ -1405,7 +1337,6 @@ body::before {
     align-self: flex-end;
   }
 
-  /* Cards */
   .card {
     padding: 16px;
   }
@@ -1414,18 +1345,15 @@ body::before {
     padding: 18px;
   }
 
-  /* Stats section */
   .stats {
     grid-template-columns: 1fr;
     gap: 12px;
   }
 
-  /* Progress bar */
   .progress-bar {
     height: 10px;
   }
 
-  /* Category bars */
   .category {
     margin-bottom: 14px;
   }
@@ -1434,7 +1362,6 @@ body::before {
     height: 8px;
   }
 
-  /* Buttons */
   button,
   .add-btn,
   .add-expense,
@@ -1444,7 +1371,6 @@ body::before {
     padding: 14px;
   }
 
-  /* Bottom navigation */
   .bottom-nav {
     height: 56px;
     font-size: 12px;
@@ -1456,7 +1382,6 @@ body::before {
     gap: 4px;
   }
 
-  /* Expense & settlement cards */
   .expense-card,
   .settlement-card,
   .roommate-card {
