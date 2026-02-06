@@ -1,13 +1,9 @@
-// Settlements page logic
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Check login
   checkAuth();
 
-  // Initialize
   updateSettlements();
 
-  // Event listeners
   document.getElementById('logoutBtn').addEventListener('click', logout);
 });
 
@@ -29,7 +25,6 @@ function updateSettlements() {
   const totalOwe = AppData.getTotalOwe();
   const totalOwed = AppData.getTotalOwed();
 
-  // Update summary cards
   const netBalanceEl = document.getElementById('netBalance');
   const netBalanceText = document.getElementById('netBalanceText');
   
@@ -56,7 +51,6 @@ function updateSettlements() {
   document.getElementById('oweCount').textContent = `${oweCount} ${oweCount === 1 ? 'person' : 'people'}`;
   document.getElementById('owedCount').textContent = `${owedCount} ${owedCount === 1 ? 'person' : 'people'}`;
 
-  // Update settlements list
   updateSettlementsList(settlements);
 }
 
@@ -77,7 +71,6 @@ function updateSettlementsList(settlements) {
     return;
   }
 
-  // Sort: owe first, then owed
   const sortedSettlements = [
     ...settlements.filter(s => s.type === 'owe'),
     ...settlements.filter(s => s.type === 'owed')
@@ -133,16 +126,12 @@ function markSettled(personId) {
   const confirmed = confirm(`Mark all settlements with ${person.name} as settled?`);
   
   if (confirmed) {
-    // Remove expenses where this person was involved in shared transactions
-    // This is a simplified approach - in a real app, you'd track individual settlements
     AppData.expenses = AppData.expenses.filter(expense => {
       if (expense.type !== 'shared') return true;
       
-      // Keep expense if neither person paid or is in the shared list
       const isPayer = expense.paidBy === personId || expense.paidBy === AppData.user.id;
       const isShared = expense.sharedWith.includes(personId) && expense.sharedWith.includes(AppData.user.id);
       
-      // Remove if both users are involved (payer and sharer)
       if (isPayer && isShared) return false;
       
       return true;
@@ -159,7 +148,6 @@ function formatCurrency(amount) {
   return amount.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
-// Update when page becomes visible
 document.addEventListener('visibilitychange', () => {
   if (!document.hidden) {
     AppData.load();
