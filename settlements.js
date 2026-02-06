@@ -79,8 +79,8 @@ function updateSettlementsList(settlements) {
   settlementListContainer.innerHTML = sortedSettlements.map(settlement => {
     const isOwe = settlement.type === 'owe';
     const text = isOwe 
-      ? `${settlement.person.name} owes you`
-      : `You owe ${settlement.person.name}`;
+      ? `You owe ${settlement.person.name}`
+      :  `${settlement.person.name} owes you`;
     
     const initial = settlement.person.name.charAt(0).toUpperCase();
     const avatarColor = settlement.person.color || 'hsl(210, 10%, 45%)';
@@ -97,7 +97,7 @@ function updateSettlementsList(settlements) {
           </div>
         </div>
         <div class="settlement-amount ${settlement.type}">
-          ${isOwe ? '+' : '-'}₹${formatCurrency(settlement.amount)}
+          ${isOwe ? '-' : '+'}₹${formatCurrency(settlement.amount)}
         </div>
         <div class="settlement-actions">
           <button class="btn btn-ghost btn-sm" onclick="sendReminder('${settlement.person.id}')">
