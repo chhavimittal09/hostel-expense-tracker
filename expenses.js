@@ -1,4 +1,3 @@
-// Expenses page logic
 
 let pieChart = null;
 let barChart = null;
@@ -22,14 +21,11 @@ function toggleChartsVisibility() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Check login
   checkAuth();
 
-  // Initialize
   updateExpenseList();
   setupFilters();
 
-  // Event listeners
   document.getElementById('logoutBtn').addEventListener('click', logout);
   document.getElementById('addExpenseBtn').addEventListener('click', openAddExpenseModal);
   document.getElementById('addExpenseForm').addEventListener('submit', handleAddExpense);
@@ -49,7 +45,6 @@ function logout() {
 }
 
 function setupFilters() {
-  // Category filters
   const categoryFilters = document.querySelectorAll('#categoryFilters .filter-pill');
   categoryFilters.forEach(filter => {
     filter.addEventListener('click', () => {
@@ -60,7 +55,6 @@ function setupFilters() {
     });
   });
 
-  // Type filters
   const typeFilters = document.querySelectorAll('#typeFilters .filter-pill');
   typeFilters.forEach(filter => {
     filter.addEventListener('click', () => {
@@ -75,7 +69,6 @@ function setupFilters() {
 function updateExpenseList() {
   const expenseListContainer = document.getElementById('expenseList');
   
-  // Filter expenses
   let expenses = AppData.expenses;
   
   if (currentCategoryFilter !== 'all') {
@@ -100,7 +93,6 @@ function updateExpenseList() {
     return;
   }
 
-  // Render expenses
   const categoryIcons = {
     'Food': '🍔',
     'Shopping': '🛍️',
@@ -145,13 +137,11 @@ function updateExpenseList() {
 }
 
 function openAddExpenseModal() {
-  // Populate roommate options
   populateRoommateOptions();
 
   document.getElementById("expenseDate").value =
   new Date().toISOString().split("T")[0];
 
-  // Reset form
   document.getElementById('addExpenseForm').reset();
   document.getElementById('sharedWithGroup').style.display = 'none';
   
@@ -163,13 +153,11 @@ function closeAddExpenseModal() {
 }
 
 function populateRoommateOptions() {
-  // Populate "Paid by" dropdown
   const paidBySelect = document.getElementById('paidBy');
   paidBySelect.innerHTML = AppData.roommates.map(roommate => 
     `<option value="${roommate.id}">${roommate.name}</option>`
   ).join('');
 
-  // Populate "Share with" checkboxes
   const checkboxContainer = document.getElementById('roommateCheckboxes');
   checkboxContainer.innerHTML = AppData.roommates.map(roommate => `
     <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
@@ -250,7 +238,6 @@ document.addEventListener('visibilitychange', () => {
 function renderCharts() {
   if (!toggleChartsVisibility()) return;
 
-  // ===== PIE CHART =====
   const categoryTotals = AppData.getSpendingByCategory();
   const pieLabels = Object.keys(categoryTotals);
   const pieValues = Object.values(categoryTotals);
@@ -298,7 +285,6 @@ function renderCharts() {
     }
   );
 
-  // ===== BAR CHART =====
   const dailyTotals = {};
           const barColors = [
            "#4695db",
