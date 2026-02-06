@@ -1497,4 +1497,24 @@ body::before {
 }
 
 
+.empty-state {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  color: #6b7280;
+  margin-top: 20px;
+}
+
+.empty-state p {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.empty-state span {
+  font-size: 14px;
+}
+
+
 
