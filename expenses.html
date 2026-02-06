@@ -80,6 +80,17 @@
           <button class="filter-pill" data-category="Entertainment">🎮 Entertainment</button>
           <button class="filter-pill" data-category="Others">📦 Others</button>
         </div>
+        <div class="charts-container">
+          <div class="chart-card">
+            <h3>Spending by Category</h3>
+            <canvas id="categoryPieChart"></canvas>
+          </div>
+
+          <div class="chart-card">
+            <h3>Daily Expenses</h3>
+            <canvas id="dailyBarChart"></canvas>
+          </div>
+        </div>       
 
         <h4 style="margin-bottom: 12px; margin-top: 20px; color: hsl(210, 10%, 25%);">Filter by Type</h4>
         <div class="filters" id="typeFilters">
@@ -196,6 +207,7 @@
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="data.js"></script>
   <script src="expenses.js"></script>
 </body>
