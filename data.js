@@ -1,10 +1,5 @@
-// ================================
-// SHARED DATA SOURCE
-// All pages read from this file
-// ================================
 
 const AppData = {
-  // Current logged-in user
   user: {
     id: 'user-1',
     name: 'You',
@@ -12,14 +7,12 @@ const AppData = {
     color: 'hsl(145, 55%, 38%)'
   },
 
-  // Monthly budget
   budget: {
     total: 10000,
     spent: 0,
     remaining: 10000
   },
 
-  // Roommates
   roommates: [
     {
       id: 'user-1',
@@ -29,10 +22,8 @@ const AppData = {
     }
   ],
 
-  // Expenses
   expenses: [],
 
-  // Helper functions
   getTotalSpent() {
     return this.expenses.reduce((sum, expense) => sum + expense.amount, 0);
   },
@@ -44,7 +35,7 @@ const AppData = {
     if (expense.type === 'personal') {
       return expense.paidBy === this.user.id ? expense.amount : 0;
     } else {
-      // Shared expense - split equally
+
       const shareCount = expense.sharedWith.length;
       return expense.amount / shareCount;
     }
@@ -74,18 +65,15 @@ const AppData = {
     const settlements = [];
     const balances = {};
 
-    // Calculate who paid what and who owes what
     this.expenses.forEach(expense => {
       if (expense.type === 'shared') {
         const shareAmount = expense.amount / expense.sharedWith.length;
         
-        // Person who paid gets credit
         if (!balances[expense.paidBy]) {
           balances[expense.paidBy] = 0;
         }
         balances[expense.paidBy] += expense.amount;
 
-        // Everyone in the group owes their share
         expense.sharedWith.forEach(personId => {
           if (!balances[personId]) {
             balances[personId] = 0;
@@ -95,7 +83,6 @@ const AppData = {
       }
     });
 
-    // Convert balances to settlements
     Object.keys(balances).forEach(personId => {
       if (personId === this.user.id) return;
       
@@ -106,7 +93,7 @@ const AppData = {
         settlements.push({
           person: person,
           amount: Math.abs(balance),
-          type: balance < 0 ? 'owe' : 'owed' // They owe you or you owe them
+          type: balance < 0 ? 'owe' : 'owed' 
         });
       }
     });
@@ -120,9 +107,9 @@ const AppData = {
     
     settlements.forEach(s => {
       if (s.type === 'owed') {
-        net += s.amount; // You are owed
+        net += s.amount; 
       } else {
-        net -= s.amount; // You owe
+        net -= s.amount; 
       }
     });
 
@@ -143,7 +130,6 @@ const AppData = {
       .reduce((sum, s) => sum + s.amount, 0);
   },
 
-  // Add expense
   addExpense(expense) {
     this.expenses.unshift({
       id: 'exp-' + Date.now(),
@@ -151,19 +137,16 @@ const AppData = {
     });
   },
 
-  // Delete expense
   deleteExpense(expenseId) {
     this.expenses = this.expenses.filter(e => e.id !== expenseId);
     this.updateBudget();
   },
 
-  // Update budget calculations
   updateBudget() {
     this.budget.spent = this.getTotalUserSpent();
     this.budget.remaining = this.budget.total - this.budget.spent;
   },
 
-  // Add roommate
   addRoommate(roommate) {
     this.roommates.push({
       id: 'user-' + Date.now(),
@@ -171,12 +154,10 @@ const AppData = {
     });
   },
 
-  // Delete roommate
   deleteRoommate(roommateId) {
-    if (roommateId === this.user.id) return; // Can't delete yourself
+    if (roommateId === this.user.id) return; 
     this.roommates = this.roommates.filter(r => r.id !== roommateId);
     
-    // Remove from expenses
     this.expenses = this.expenses.filter(e => {
       if (e.paidBy === roommateId) return false;
       if (e.sharedWith && e.sharedWith.includes(roommateId)) {
@@ -188,13 +169,11 @@ const AppData = {
     this.updateBudget();
   },
 
-  // Update budget total
   updateBudgetTotal(newTotal) {
     this.budget.total = newTotal;
     this.updateBudget();
   },
 
-  // Save to localStorage
   save() {
     localStorage.setItem('hostelExpenseData', JSON.stringify({
       user: this.user,
@@ -204,7 +183,6 @@ const AppData = {
     }));
   },
 
-  // Load from localStorage
   load() {
     const saved = localStorage.getItem('hostelExpenseData');
     if (saved) {
