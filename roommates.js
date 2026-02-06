@@ -1,18 +1,13 @@
-// Roommates page logic
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Check login
   checkAuth();
 
-  // Initialize
   updateRoommateList();
 
-  // Event listeners
   document.getElementById('logoutBtn').addEventListener('click', logout);
   document.getElementById('addRoommateBtn').addEventListener('click', openAddRoommateModal);
   document.getElementById('addRoommateForm').addEventListener('submit', handleAddRoommate);
 
-  // Select first color by default
   const firstColorOption = document.querySelector('.color-option div');
   if (firstColorOption) {
     selectColor(firstColorOption);
@@ -85,12 +80,10 @@ function updateRoommateList() {
 function openAddRoommateModal() {
   document.getElementById('addRoommateForm').reset();
   
-  // Reset color selection
   document.querySelectorAll('.color-option div').forEach(el => {
     el.style.border = '3px solid transparent';
   });
   
-  // Select first color
   const firstColorOption = document.querySelector('.color-option div');
   if (firstColorOption) {
     selectColor(firstColorOption);
@@ -104,15 +97,12 @@ function closeAddRoommateModal() {
 }
 
 function selectColor(element) {
-  // Remove selection from all
   document.querySelectorAll('.color-option div').forEach(el => {
     el.style.border = '3px solid transparent';
   });
   
-  // Select this one
   element.style.border = '3px solid hsl(145, 55%, 38%)';
   
-  // Check the radio button
   const radio = element.parentElement.querySelector('input[type="radio"]');
   if (radio) {
     radio.checked = true;
@@ -168,7 +158,6 @@ function deleteRoommate(roommateId) {
   }
 }
 
-// Update list when page becomes visible
 document.addEventListener('visibilitychange', () => {
   if (!document.hidden) {
     AppData.load();
