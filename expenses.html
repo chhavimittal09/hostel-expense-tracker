@@ -66,21 +66,9 @@
           ➕ Add Expense
         </button>
       </div>
-
-      <!-- Filters -->
-      <div style="margin-bottom: 24px;">
-        <h4 style="margin-bottom: 12px; color: hsl(210, 10%, 25%);">Filter by Category</h4>
-        <div class="filters" id="categoryFilters">
-          <button class="filter-pill active" data-category="all">All</button>
-          <button class="filter-pill" data-category="Food">🍔 Food</button>
-          <button class="filter-pill" data-category="Shopping">🛍️ Shopping</button>
-          <button class="filter-pill" data-category="Transport">🚗 Transport</button>
-          <button class="filter-pill" data-category="Utilities">💡 Utilities</button>
-          <button class="filter-pill" data-category="Groceries">🛒 Groceries</button>
-          <button class="filter-pill" data-category="Entertainment">🎮 Entertainment</button>
-          <button class="filter-pill" data-category="Others">📦 Others</button>
-        </div>
-        <div class="charts-container" id="chartsContainer">
+      
+      <!--Charts-->
+      <div class="charts-container" id="chartsContainer">
           <div class="chart-card">
             <h3>Spending by Category</h3>
             <canvas id="categoryPieChart"></canvas>
@@ -95,8 +83,20 @@
             <h3>Daily Expenses</h3>
             <canvas id="dailyBarChart"></canvas>
           </div>
-        </div>       
-
+        </div>      
+      <!-- Filters -->
+      <div style="margin-bottom: 24px;">
+        <h4 style="margin-bottom: 12px; color: hsl(210, 10%, 25%);">Filter by Category</h4>
+        <div class="filters" id="categoryFilters">
+          <button class="filter-pill active" data-category="all">All</button>
+          <button class="filter-pill" data-category="Food">🍔 Food</button>
+          <button class="filter-pill" data-category="Shopping">🛍️ Shopping</button>
+          <button class="filter-pill" data-category="Transport">🚗 Transport</button>
+          <button class="filter-pill" data-category="Utilities">💡 Utilities</button>
+          <button class="filter-pill" data-category="Groceries">🛒 Groceries</button>
+          <button class="filter-pill" data-category="Entertainment">🎮 Entertainment</button>
+          <button class="filter-pill" data-category="Others">📦 Others</button>
+        </div>
         <h4 style="margin-bottom: 12px; margin-top: 20px; color: hsl(210, 10%, 25%);">Filter by Type</h4>
         <div class="filters" id="typeFilters">
           <button class="filter-pill active" data-type="all">All</button>
