@@ -34,13 +34,13 @@ function updateSettlements() {
   const netBalanceText = document.getElementById('netBalanceText');
   
   if (netBalance > 0) {
-    netBalanceEl.textContent = `-₹${formatCurrency(Math.abs(netBalance))}`;
-    netBalanceEl.style.color = 'hsl(0, 72%, 55%)';
-    netBalanceText.textContent = "You owe overall";
-  } else if (netBalance < 0) {
     netBalanceEl.textContent = `-₹${formatCurrency(netBalance)}`;
     netBalanceEl.style.color = 'hsl(145, 55%, 38%)';
     netBalanceText.textContent = "You're owed overall";
+  } else if (netBalance < 0) {
+    netBalanceEl.textContent = `-₹${formatCurrency(Math.abs(netBalance))}`;
+    netBalanceEl.style.color = 'hsl(0, 72%, 55%)';
+    netBalanceText.textContent = "You owe overall";
   } else {
     netBalanceEl.textContent = '₹0';
     netBalanceEl.style.color = 'hsl(210, 10%, 25%)';
