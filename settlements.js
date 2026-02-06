@@ -34,13 +34,13 @@ function updateSettlements() {
   const netBalanceText = document.getElementById('netBalanceText');
   
   if (netBalance > 0) {
-    netBalanceEl.textContent = `+₹${formatCurrency(netBalance)}`;
-    netBalanceEl.style.color = 'hsl(145, 55%, 38%)';
-    netBalanceText.textContent = "You're owed overall";
-  } else if (netBalance < 0) {
     netBalanceEl.textContent = `-₹${formatCurrency(Math.abs(netBalance))}`;
     netBalanceEl.style.color = 'hsl(0, 72%, 55%)';
     netBalanceText.textContent = "You owe overall";
+  } else if (netBalance < 0) {
+    netBalanceEl.textContent = `-₹${formatCurrency(netBalance)}`;
+    netBalanceEl.style.color = 'hsl(145, 55%, 38%)';
+    netBalanceText.textContent = "You're owed overall";
   } else {
     netBalanceEl.textContent = '₹0';
     netBalanceEl.style.color = 'hsl(210, 10%, 25%)';
@@ -86,8 +86,8 @@ function updateSettlementsList(settlements) {
   settlementListContainer.innerHTML = sortedSettlements.map(settlement => {
     const isOwe = settlement.type === 'owe';
     const text = isOwe 
-      ? `You owe ${settlement.person.name}`
-      : `${settlement.person.name} owes you`;
+      ? `${settlement.person.name} owes you`
+      : `You owe ${settlement.person.name}`;
     
     const initial = settlement.person.name.charAt(0).toUpperCase();
     const avatarColor = settlement.person.color || 'hsl(210, 10%, 45%)';
@@ -104,7 +104,7 @@ function updateSettlementsList(settlements) {
           </div>
         </div>
         <div class="settlement-amount ${settlement.type}">
-          ${isOwe ? '-' : '+'}₹${formatCurrency(settlement.amount)}
+          ${isOwe ? '+' : '-'}₹${formatCurrency(settlement.amount)}
         </div>
         <div class="settlement-actions">
           <button class="btn btn-ghost btn-sm" onclick="sendReminder('${settlement.person.id}')">
